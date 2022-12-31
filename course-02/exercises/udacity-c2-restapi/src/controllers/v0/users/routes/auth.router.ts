@@ -37,12 +37,15 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
   //   "auth.router not yet implemented, you'll cover this in lesson 5"
   // );
   //   return next();
+  console.log("Verifying user");
   if (!req.headers || !req.headers.authorization) {
+    console.log("sending no authorization headers");
     return res.status(401).send({ message: "No authorization headers." });
   }
 
   const token_bearer = req.headers.authorization.split(" ");
   if (token_bearer.length != 2) {
+    console.log("sending malformed token");
     return res.status(401).send({ message: "Malformed token." });
   }
 
@@ -50,6 +53,7 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
 
   return jwt.verify(token, config.jwt.secret, (err, decoded) => {
     if (err) {
+      console.log("sending 500");
       return res
         .status(500)
         .send({ auth: false, message: "Failed to authenticate." });

@@ -38,7 +38,23 @@ router.get("/:id", async (req: Request, res: Response) => {
 
 // update a specific resource
 router.patch("/:id", requireAuth, async (req: Request, res: Response) => {
-  //@TODO try it yourself
+  //TODO: try it yourself
+  //FIXME: figure out the kind of data that is sent when patching.
+  //   res.status(500).send("not implemented");
+
+  //   extract id from query
+  //   const { id } = req.params;
+
+  //   if id is not found return and error
+  //   if (!id) {
+  //     return res.status(400).send("id must be included as a query parameter");
+  //   }
+
+  //   FeedItem.findByPk(id).then((feed) => {
+
+  //     return feed.save();
+  //   });
+
   res.status(500).send("not implemented");
 });
 
